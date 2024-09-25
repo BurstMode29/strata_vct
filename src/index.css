@@ -3,14 +3,33 @@
   line-height: 1.5;
   font-weight: 400;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
+
+  background: linear-gradient(to right bottom, #2E3148, #000000);
+
+  opacity: 0;
+  animation: fadeIn 3s ease-in forwards;
+  transition:all 2s ease;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 a {
