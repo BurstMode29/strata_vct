@@ -1,7 +1,7 @@
-import React from 'react'
+// import React from 'react'
 import Logo from '../assets/strata.svg'
 
-const StrataLogo = () => {
+const StrataLogo = ({size = ""}) => {
     const center = {
         display: 'flex',
         justifyContent: 'center',
@@ -14,8 +14,8 @@ const StrataLogo = () => {
                 <img 
                     src={Logo}
                     style={{
-                     height: '10vw', 
-                     width: '10vw',  
+                     height: size, 
+                     width: size,  
                     }}
                 ></img>
             </div>
