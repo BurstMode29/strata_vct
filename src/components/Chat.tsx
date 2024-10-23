@@ -4,14 +4,10 @@ import Send from '../assets/send.svg';
 import axios from 'axios';
 
 const Chat = () => {
-  // const [messages, setMessages] = useState([]);
   const [messages, setMessages] = useState<string[]>([]);
   const [input, setInput] = useState("");
 
   const fetchAPI = async () => {
-    // const response = await axios.get("http://localhost:3000/ai-response")
-    // setMessages(response.data);
-    // console.log(response.data);
     try {
       const response = await axios.get("http://localhost:3000/ai-response");
       const data = Array.isArray(response.data) ? response.data : [];
@@ -19,22 +15,15 @@ const Chat = () => {
       console.log(data);
     } catch (error) {
       console.error("Error fetching messages:", error);
-      setMessages([]); // Set to an empty array on error
+      setMessages([]); 
     }
   }
 
   const requestData = async () => {
-    // const request = await axios.post("http://localhost:3000/ai-response", {
-    //   input
-    // })
-    // setMessages(request.data);
-    // console.log(request.data);
     try {
       const response = await axios.post("http://localhost:3000/ai-response", { input });
-      console.log("Request sent:", { input });  // Log the payload
-      console.log("Response data:", response.data);  // Log the response
-
-      // const data = Array.isArray(response.data) ? response.data : [];
+      console.log("Request sent:", { input });
+      console.log("Response data:", response.data);
       const replyMessage = response.data.reply ? [response.data.reply] : [];
       setMessages(replyMessage);
     } catch (error) {
@@ -66,11 +55,6 @@ const Chat = () => {
     }}>
       <Paper sx={{ flexGrow: 1, overflowY: 'auto', borderRadius: "5px 5px 0px 0px", backgroundColor: '#828282', }}>
         <List>
-          {/* {messages.map((data, index) => (
-            <ListItem key={index}>
-              <ListItemText primary={data} />
-            </ListItem>
-          ))} */}
           {Array.isArray(messages) ? (
             messages.map((data, index) => (
               <ListItem key={index}>
